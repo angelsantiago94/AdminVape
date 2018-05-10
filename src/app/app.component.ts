@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ElectronService} from 'ngx-electron';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
