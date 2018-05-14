@@ -1,66 +1,60 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {AngularFireAuth} from 'angularfire2/auth';
-
+import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase';
+import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class AuthService {
-
-  authState: any = null;
-
-  constructor(private afAuth: AngularFireAuth, private router: Router) {
-    this.afAuth.authState.subscribe((auth) => {
-      this.authState = auth;
-    });
+  private user: Observable<firebase.User>;
+  private userDetails: firebase.User = null;
+constructor(private _firebaseAuth: AngularFireAuth, private router: Router) { 
+      this.user = _firebaseAuth.authState;
+this.user.subscribe(
+        (user) => {
+          if (user) {
+            this.userDetails = user;
+            console.log(this.userDetails);
+          }
+          else {
+            this.userDetails = null;
+          }
+        }
+      );
   }
-
-  get isUserAnonymousLoggedIn(): boolean {
-    return (this.authState !== null) ? this.authState.isAnonymous : false;
+signInWithTwitter() {
+    return this._firebaseAuth.auth.signInWithPopup(
+      new firebase.auth.TwitterAuthProvider()
+    )
   }
-
-  get currentUserId(): string {
-    return (this.authState !== null) ? this.authState.uid : '';
+signInWithFacebook() {
+    return this._firebaseAuth.auth.signInWithPopup(
+      new firebase.auth.FacebookAuthProvider()
+    )
   }
-
-  get currentUserName(): string {
-    return this.authState['email'];
+signInWithGoogle() {
+    return this._firebaseAuth.auth.signInWithPopup(
+      new firebase.auth.GoogleAuthProvider()
+    )
   }
-
-  get currentUser(): any {
-    return (this.authState !== null) ? this.authState : null;
-  }
-
-  get isUserEmailLoggedIn(): boolean {
-    if ((this.authState !== null) && (!this.isUserAnonymousLoggedIn)) {
-      return true;
-    } else {
+isLoggedIn() {
+  if (this.userDetails == null ) {
       return false;
+    } else {
+      return true;
     }
   }
 
-  signUpWithEmail(email: string, password: string) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((user) => {
-        this.authState = user;
-      })
-      .catch(error => {
-        console.log(error);
-        throw error;
-      });
+  logout(){
+    this._firebaseAuth.auth.signOut()
+    .then((res) => this.router.navigate(['/login']));
   }
 
-  loginWithEmail(email: string, password: string) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        this.authState = user;
-      })
-      .catch(error => {
-        console.log(error);
-        throw error;
-      });
-  }
+  signInRegular(email, password) {
+    const credential = firebase.auth.EmailAuthProvider.credential( email, password );
+    return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
+ }
 
-  signOut(): void {
-    this.afAuth.auth.signOut();
-    this.router.navigate(['/']);
-  }
+ registro(email, password){
+    return this._firebaseAuth.auth.createUserWithEmailAndPassword(email,password)
+ }
 }

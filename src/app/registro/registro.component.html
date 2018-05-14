@@ -1,0 +1,35 @@
+<div class="jumbotron">
+  <form (submit)="registro()" class="form-horizontal">
+      <fieldset>
+      
+      <!-- Form Name -->
+      <legend><h2>Registro</h2></legend>
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="email">Email</label>  
+        <div class="col-md-4">
+        <input id="email" [(ngModel)]="email" name="email" type="email" placeholder="ejemplo@ejemplo.com" class="form-control input-md" required="">
+          
+        </div>
+      </div>
+      
+      <!-- Password input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="passport">Contraseña</label>
+        <div class="col-md-4">
+          <input id="passport" [(ngModel)]="password" name="passport" type="password" placeholder="*****" class="form-control input-md" required="">
+          
+        </div>
+      </div>
+      
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="resgistrarse"></label>
+        <div class="col-md-4">
+          <button type="submit" id="resgistrarse" name="resgistrarse" class="btn btn-primary">Registrarse</button>
+        </div>
+      </div>
+      
+      </fieldset>
+      </form>
+  </div>

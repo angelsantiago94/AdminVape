@@ -8,7 +8,7 @@ const {app, BrowserWindow} = require('electron')
   
   function createWindow () {
     // Crea la ventana del navegador.
-    win = new BrowserWindow({width: 1600, height: 900})
+    win = new BrowserWindow({width: 800, height: 600})
   
     // y carga el archivo index.html de la aplicación.
     win.loadURL(url.format({
@@ -28,12 +28,12 @@ const {app, BrowserWindow} = require('electron')
       win = null
     })
   }
-  
+  app.commandLine.appendSwitch('ignore-gpu-blacklist');
   // Este método será llamado cuando Electron haya terminado
   // la inicialización y esté listo para crear ventanas del navegador.
   // Algunas APIs pueden solamente ser usadas despues de que este evento ocurra.
   app.on('ready', createWindow)
-  
+ 
   // Salir cuando todas las ventanas estén cerradas.
   app.on('window-all-closed', () => {
     // En macOS es común para las aplicaciones y sus barras de menú

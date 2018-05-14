@@ -10,7 +10,11 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 import {NgxElectronModule} from 'ngx-electron';
 import { AppComponent } from './app.component';
@@ -18,9 +22,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { RecetasComponent } from './recetas/recetas.component';
 import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
 
 import { AuthService } from './auth.service';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuard } from './auth.guard';
+import { IngrdientesComponent } from './ingrdientes/ingrdientes.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,9 @@ import { AuthGuardService } from './auth-guard.service';
     NavbarComponent,
     HomeComponent,
     RecetasComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroComponent,
+    IngrdientesComponent
   ],
   imports: [
     CommonModule,
@@ -39,9 +47,11 @@ import { AuthGuardService } from './auth-guard.service';
     NgxElectronModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    NgbModule.forRoot()
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
