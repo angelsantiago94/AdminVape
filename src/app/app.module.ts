@@ -28,6 +28,12 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { IngrdientesComponent } from './ingrdientes/ingrdientes.component';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
+import { NavbarAngularComponent } from './navbar-angular/navbar-angular.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +42,8 @@ import { IngrdientesComponent } from './ingrdientes/ingrdientes.component';
     RecetasComponent,
     LoginComponent,
     RegistroComponent,
-    IngrdientesComponent
+    IngrdientesComponent,
+    NavbarAngularComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +56,10 @@ import { IngrdientesComponent } from './ingrdientes/ingrdientes.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatCheckboxModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
