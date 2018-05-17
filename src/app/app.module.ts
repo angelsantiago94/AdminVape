@@ -28,6 +28,11 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { IngrdientesComponent } from './ingrdientes/ingrdientes.component';
 
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +54,11 @@ import { IngrdientesComponent } from './ingrdientes/ingrdientes.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    NoopAnimationsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

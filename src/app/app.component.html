@@ -1,5 +1,7 @@
-<app-navbar></app-navbar>
-<div class="container" style="padding-top: 60px;">
-  <router-outlet></router-outlet>
-  dasdasdasds
-</div>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+      <app-navbar></app-navbar>
+    </mat-sidenav>
+    <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+</mat-sidenav-container>
+  
