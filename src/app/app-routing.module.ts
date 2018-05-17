@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { IngrdientesComponent } from './ingrdientes/ingrdientes.component';
 
+
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: 'login', component: LoginComponent , pathMatch: 'full'},
