@@ -29,11 +29,15 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { IngrdientesComponent } from './ingrdientes/ingrdientes.component';
 
+
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
+
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +67,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatIconModule,
     HttpClientModule,
     MatGridListModule
+
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
