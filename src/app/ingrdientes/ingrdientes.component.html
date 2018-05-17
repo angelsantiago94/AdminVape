@@ -1,5 +1,9 @@
-<ul>
-  <li class="text" style="display:unset" *ngFor="let item of ingredientesList | async">
-    <p>{{item.Nombre}}</p>
-  </li>
-</ul>
+
+<mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile
+        *ngFor="let item of ingredientesList | async"
+        [colspan]="1"
+        [rowspan]="1">
+        <p>{{item.Nombre}}</p>
+    </mat-grid-tile>
+  </mat-grid-list>

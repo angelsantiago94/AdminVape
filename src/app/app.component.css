@@ -5,3 +5,13 @@
 mat-sidenav{
     background-color: #353535
 }
+
+.barraTop{
+    background-color: #353535;
+}
+
+.toggleMenu{
+    background-color: #353535;
+    padding: 10px;
+}
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }

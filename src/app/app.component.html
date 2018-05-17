@@ -1,7 +1,13 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav mode="side" opened>
+    <mat-sidenav  #sidenav mode="over" opened>
       <app-navbar></app-navbar>
     </mat-sidenav>
-    <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+    <mat-sidenav-content>
+      <nav class="barraTop">
+        <button class="toggleMenu" mat-button (click)="sidenav.toggle()">
+            <mat-icon class="material-icons md-light" svgIcon="menu"></mat-icon></button>
+        </nav>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
 </mat-sidenav-container>
   
